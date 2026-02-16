@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>asred.studio - iOS Apps</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0b;
+            --bg-secondary: #141416;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --bg-card-hover: rgba(255, 255, 255, 0.06);
+            --text-primary: #fafafa;
+            --text-secondary: rgba(255, 255, 255, 0.6);
+            --text-muted: rgba(255, 255, 255, 0.4);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --accent-purple: #a855f7;
+            --accent-green: #22c55e;
+            --accent-blue: #3b82f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        .glow {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .glow-1 {
+            top: -200px;
+            left: -100px;
+            background: var(--accent-purple);
+        }
+
+        .glow-2 {
+            bottom: -200px;
+            right: -100px;
+            background: var(--accent-green);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            border-radius: 16px;
+            margin-bottom: 32px;
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.7) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-bottom: 80px;
+        }
+
+        .app-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 40px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+        }
+
+        .app-card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(255, 255, 255, 0.12);
+            transform: translateY(-4px);
+        }
+
+        .app-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .app-icon.gpa {
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            box-shadow: 0 8px 32px rgba(168, 85, 247, 0.3);
+        }
+
+        .app-icon.softstep {
+            background: linear-gradient(135deg, #059669, #22c55e);
+            box-shadow: 0 8px 32px rgba(34, 197, 94, 0.3);
+        }
+
+        .app-card h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(251, 146, 60, 0.15);
+            color: #fb923c;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 6px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        .app-card .description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 28px;
+            line-height: 1.7;
+        }
+
+        .features {
+            margin-bottom: 32px;
+        }
+
+        .features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .features li:last-child {
+            border-bottom: none;
+        }
+
+        .features li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent-purple);
+            flex-shrink: 0;
+        }
+
+        .app-card.softstep .features li::before {
+            background: var(--accent-green);
+        }
+
+        .app-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(168, 85, 247, 0.3);
+        }
+
+        .btn-primary.green {
+            background: linear-gradient(135deg, #059669, #22c55e);
+        }
+
+        .btn-primary.green:hover {
+            box-shadow: 0 8px 24px rgba(34, 197, 94, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-primary);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            margin-bottom: 24px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 48px 20px;
+            }
+
+            .header {
+                margin-bottom: 48px;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .apps-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .app-card {
+                padding: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="noise"></div>
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+
+    <div class="container">
+        <header class="header">
+            <div class="logo">A</div>
+            <h1>asred.studio</h1>
+            <p>Crafting iOS apps for a better life</p>
+        </header>
+
+        <div class="apps-grid">
+            <article class="app-card">
+                <div class="app-icon gpa"><img src="apps/gpa/gpa-logo.png" alt="掌握採購法"></div>
+                <h2>掌握採購法</h2>
+                <p class="description">專為政府採購法學習設計的測驗應用程式，幫助您有效準備採購法相關考試。</p>
+                <ul class="features">
+                    <li>採購法測驗模擬</li>
+                    <li>靈活的練習模式</li>
+                    <li>錯題複習功能</li>
+                    <li>完整考試紀錄</li>
+                    <li>支援 iPhone 和 iPad</li>
+                </ul>
+                <div class="app-links">
+                    <a href="https://apps.apple.com/tw/app/%E6%8E%8C%E6%8F%A1%E6%8E%A1%E8%B3%BC%E6%B3%95/id6747655373" class="btn btn-primary" target="_blank">App Store</a>
+                    <a href="apps/gpa/index.html" class="btn btn-secondary">了解更多</a>
+                    <a href="apps/gpa/privacy.html" class="btn btn-secondary">隱私政策</a>
+                </div>
+            </article>
+
+            <article class="app-card softstep">
+                <div class="app-icon softstep"><img src="apps/softstep/softstep-logo.png" alt="Soft Step"></div>
+                <h2>Soft Step <span class="badge">Coming Soon</span></h2>
+                <p class="description">超慢跑運動追蹤應用程式，結合節拍器和健康數據，讓您輕鬆維持健康運動習慣。</p>
+                <ul class="features">
+                    <li>超慢跑計時器與目標設定</li>
+                    <li>節拍器輔助維持步頻</li>
+                    <li>Apple HealthKit 整合</li>
+                    <li>運動數據統計與追蹤</li>
+                    <li>支援 iPhone 和 Apple Watch</li>
+                </ul>
+                <div class="app-links">
+                    <a href="apps/softstep/index.html" class="btn btn-primary green">了解更多</a>
+                    <a href="apps/softstep/privacy.html" class="btn btn-secondary">隱私政策</a>
+                </div>
+            </article>
+        </div>
+
+        <footer class="footer">
+            <p>打造優質 iOS 應用程式，專注於提升您的生活品質</p>
+            <div class="footer-links">
+                <a href="mailto:flakier-parader3z@icloud.com">flakier-parader3z@icloud.com</a>
+            </div>
+            <div class="copyright">
+                © 2025 asred.studio. All rights reserved.
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

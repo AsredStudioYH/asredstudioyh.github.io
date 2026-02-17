@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soft Step - 超慢跑 iOS App</title>
+    <title>Soft Step - Slow Jogging iOS App</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -78,6 +78,9 @@
         }
 
         .back-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 40px;
         }
 
@@ -93,6 +96,30 @@
 
         .back-nav a:hover {
             color: var(--text-primary);
+        }
+
+        .lang-select {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-family: 'Inter', -apple-system, sans-serif;
+            padding: 6px 10px;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .lang-select:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: var(--text-primary);
+        }
+
+        .lang-select option {
+            background: #1a1a1b;
+            color: #fafafa;
         }
 
         .header {
@@ -341,51 +368,152 @@
 
     <div class="container">
         <nav class="back-nav">
-            <a href="../../index.html">← Back to Home</a>
+            <a href="../../index.html">← <span data-lang="en">Back to Home</span><span data-lang="zh" hidden>返回首頁</span><span data-lang="zh-hans" hidden>返回首页</span><span data-lang="ja" hidden>ホームへ戻る</span><span data-lang="ko" hidden>홈으로</span></a>
+            <select class="lang-select" id="lang-select" onchange="setLang(this.value)">
+                <option value="en">English</option>
+                <option value="zh">繁體中文</option>
+                <option value="zh-hans">简体中文</option>
+                <option value="ja">日本語</option>
+                <option value="ko">한국어</option>
+            </select>
         </nav>
 
         <header class="header">
             <div class="app-icon"><img src="softstep-logo.png" alt="Soft Step"></div>
             <h1>Soft Step</h1>
-            <p class="subtitle">超慢跑運動追蹤應用程式</p>
+            <p class="subtitle">
+                <span data-lang="en">Slow Jogging Timer &amp; Metronome</span>
+                <span data-lang="zh" hidden>超慢跑計時節拍器</span>
+                <span data-lang="zh-hans" hidden>超慢跑计时节拍器</span>
+                <span data-lang="ja" hidden>スロージョギング タイマー＆メトロノーム</span>
+                <span data-lang="ko" hidden>슬로우 조깅 타이머 &amp; 메트로놈</span>
+            </p>
             <span class="badge">Coming Soon</span>
         </header>
 
         <div class="content">
             <p class="intro">
-                Soft Step 是專為超慢跑運動設計的 iOS 應用程式。結合計時器、節拍器和健康數據追蹤，幫助您輕鬆維持健康的運動習慣。無論是剛開始運動的初學者，還是想要追蹤運動數據的愛好者，Soft Step 都能滿足您的需求。
+                <span data-lang="en">Soft Step is an iOS app designed specifically for slow jogging. Combining a timer, metronome, and health data tracking, it helps you effortlessly maintain healthy workout habits. Whether you're a beginner or a fitness enthusiast looking to track your data, Soft Step has you covered.</span>
+                <span data-lang="zh" hidden>Soft Step 是專為超慢跑運動設計的 iOS 應用程式。結合計時器、節拍器和健康數據追蹤，幫助您輕鬆維持健康的運動習慣。無論是剛開始運動的初學者，還是想要追蹤運動數據的愛好者，Soft Step 都能滿足您的需求。</span>
+                <span data-lang="zh-hans" hidden>Soft Step 是专为超慢跑运动设计的 iOS 应用程序。结合计时器、节拍器和健康数据追踪，帮助您轻松维持健康的运动习惯。无论是刚开始运动的初学者，还是想要追踪运动数据的爱好者，Soft Step 都能满足您的需求。</span>
+                <span data-lang="ja" hidden>Soft Step は、スロージョギング運動のために設計された iOS アプリです。タイマー、メトロノーム、健康データ追跡を組み合わせ、健康的な運動習慣を楽に維持できます。運動を始めたばかりの初心者でも、データを追跡したい愛好家でも、Soft Step がサポートします。</span>
+                <span data-lang="ko" hidden>Soft Step 은 슬로우 조깅 운동을 위해 설계된 iOS 앱입니다. 타이머, 메트로놈, 건강 데이터 추적을 결합하여 건강한 운동 습관을 쉽게 유지할 수 있습니다. 운동을 막 시작한 초보자든, 데이터를 추적하고 싶은 애호가든 Soft Step 이 도움을 드립니다.</span>
             </p>
 
-            <h2>主要功能</h2>
+            <h2>
+                <span data-lang="en">Key Features</span>
+                <span data-lang="zh" hidden>主要功能</span>
+                <span data-lang="zh-hans" hidden>主要功能</span>
+                <span data-lang="ja" hidden>主な機能</span>
+                <span data-lang="ko" hidden>주요 기능</span>
+            </h2>
             <div class="features-grid">
                 <div class="feature-item">
-                    <h3>運動計時器</h3>
-                    <p>設定運動目標時間，追蹤每次運動進度</p>
+                    <h3>
+                        <span data-lang="en">Workout Timer</span>
+                        <span data-lang="zh" hidden>運動計時器</span>
+                        <span data-lang="zh-hans" hidden>运动计时器</span>
+                        <span data-lang="ja" hidden>運動タイマー</span>
+                        <span data-lang="ko" hidden>운동 타이머</span>
+                    </h3>
+                    <p>
+                        <span data-lang="en">Set your target workout time and track progress each session</span>
+                        <span data-lang="zh" hidden>設定運動目標時間，追蹤每次運動進度</span>
+                        <span data-lang="zh-hans" hidden>设定运动目标时间，追踪每次运动进度</span>
+                        <span data-lang="ja" hidden>目標運動時間を設定し、毎回の進捗を追跡</span>
+                        <span data-lang="ko" hidden>목표 운동 시간을 설정하고 매번 진행 상황 추적</span>
+                    </p>
                 </div>
                 <div class="feature-item">
-                    <h3>節拍器輔助</h3>
-                    <p>可調節步頻的節拍器，幫助維持穩定的運動節奏</p>
+                    <h3>
+                        <span data-lang="en">Metronome</span>
+                        <span data-lang="zh" hidden>節拍器輔助</span>
+                        <span data-lang="zh-hans" hidden>节拍器辅助</span>
+                        <span data-lang="ja" hidden>メトロノーム</span>
+                        <span data-lang="ko" hidden>메트로놈</span>
+                    </h3>
+                    <p>
+                        <span data-lang="en">Adjustable cadence metronome to help maintain a steady pace</span>
+                        <span data-lang="zh" hidden>可調節步頻的節拍器，幫助維持穩定的運動節奏</span>
+                        <span data-lang="zh-hans" hidden>可调节步频的节拍器，帮助维持稳定的运动节奏</span>
+                        <span data-lang="ja" hidden>ペース調整可能なメトロノームで安定したリズムを維持</span>
+                        <span data-lang="ko" hidden>보폭 조절 가능한 메트로놈으로 안정적인 리듬 유지</span>
+                    </p>
                 </div>
                 <div class="feature-item">
-                    <h3>HealthKit 整合</h3>
-                    <p>與 Apple 健康 App 同步運動數據</p>
+                    <h3>
+                        <span data-lang="en">HealthKit Integration</span>
+                        <span data-lang="zh" hidden>HealthKit 整合</span>
+                        <span data-lang="zh-hans" hidden>HealthKit 整合</span>
+                        <span data-lang="ja" hidden>HealthKit 連携</span>
+                        <span data-lang="ko" hidden>HealthKit 연동</span>
+                    </h3>
+                    <p>
+                        <span data-lang="en">Sync workout data with the Apple Health app</span>
+                        <span data-lang="zh" hidden>與 Apple 健康 App 同步運動數據</span>
+                        <span data-lang="zh-hans" hidden>与 Apple 健康 App 同步运动数据</span>
+                        <span data-lang="ja" hidden>Apple ヘルスケアアプリと運動データを同期</span>
+                        <span data-lang="ko" hidden>Apple 건강 앱과 운동 데이터 동기화</span>
+                    </p>
                 </div>
                 <div class="feature-item">
-                    <h3>數據統計</h3>
-                    <p>追蹤步數、卡路里、運動時間等健康數據</p>
+                    <h3>
+                        <span data-lang="en">Statistics</span>
+                        <span data-lang="zh" hidden>數據統計</span>
+                        <span data-lang="zh-hans" hidden>数据统计</span>
+                        <span data-lang="ja" hidden>データ統計</span>
+                        <span data-lang="ko" hidden>데이터 통계</span>
+                    </h3>
+                    <p>
+                        <span data-lang="en">Track steps, calories, workout time, and more health data</span>
+                        <span data-lang="zh" hidden>追蹤步數、卡路里、運動時間等健康數據</span>
+                        <span data-lang="zh-hans" hidden>追踪步数、卡路里、运动时间等健康数据</span>
+                        <span data-lang="ja" hidden>歩数、カロリー、運動時間などの健康データを追跡</span>
+                        <span data-lang="ko" hidden>걸음수, 칼로리, 운동 시간 등 건강 데이터 추적</span>
+                    </p>
                 </div>
                 <div class="feature-item">
-                    <h3>每日提醒</h3>
-                    <p>設定運動提醒，養成規律運動習慣</p>
+                    <h3>
+                        <span data-lang="en">Daily Reminder</span>
+                        <span data-lang="zh" hidden>每日提醒</span>
+                        <span data-lang="zh-hans" hidden>每日提醒</span>
+                        <span data-lang="ja" hidden>毎日のリマインダー</span>
+                        <span data-lang="ko" hidden>매일 알림</span>
+                    </h3>
+                    <p>
+                        <span data-lang="en">Set workout reminders to build regular exercise habits</span>
+                        <span data-lang="zh" hidden>設定運動提醒，養成規律運動習慣</span>
+                        <span data-lang="zh-hans" hidden>设定运动提醒，养成规律运动习惯</span>
+                        <span data-lang="ja" hidden>運動リマインダーを設定し、規則的な習慣を形成</span>
+                        <span data-lang="ko" hidden>운동 알림을 설정하여 규칙적인 습관 형성</span>
+                    </p>
                 </div>
                 <div class="feature-item">
-                    <h3>多種音效</h3>
-                    <p>提供多種節拍器音效選擇</p>
+                    <h3>
+                        <span data-lang="en">Sound Options</span>
+                        <span data-lang="zh" hidden>多種音效</span>
+                        <span data-lang="zh-hans" hidden>多种音效</span>
+                        <span data-lang="ja" hidden>音声オプション</span>
+                        <span data-lang="ko" hidden>다양한 음향</span>
+                    </h3>
+                    <p>
+                        <span data-lang="en">Multiple metronome sound options to choose from</span>
+                        <span data-lang="zh" hidden>提供多種節拍器音效選擇</span>
+                        <span data-lang="zh-hans" hidden>提供多种节拍器音效选择</span>
+                        <span data-lang="ja" hidden>複数のメトロノーム音声を選択可能</span>
+                        <span data-lang="ko" hidden>다양한 메트로놈 음향 선택 제공</span>
+                    </p>
                 </div>
             </div>
 
             <div class="platform-section">
-                <h3>支援平台</h3>
+                <h3>
+                    <span data-lang="en">Supported Platforms</span>
+                    <span data-lang="zh" hidden>支援平台</span>
+                    <span data-lang="zh-hans" hidden>支持平台</span>
+                    <span data-lang="ja" hidden>対応プラットフォーム</span>
+                    <span data-lang="ko" hidden>지원 플랫폼</span>
+                </h3>
                 <div class="platforms">
                     <div class="platform">
                         <span class="platform-icon">&#128241;</span>
@@ -398,21 +526,73 @@
                 </div>
             </div>
 
-            <h2>支援語言</h2>
+            <h2>
+                <span data-lang="en">Supported Languages</span>
+                <span data-lang="zh" hidden>支援語言</span>
+                <span data-lang="zh-hans" hidden>支持语言</span>
+                <span data-lang="ja" hidden>対応言語</span>
+                <span data-lang="ko" hidden>지원 언어</span>
+            </h2>
             <div class="languages">
-                <span class="lang-tag">繁體中文</span>
-                <span class="lang-tag">簡體中文</span>
                 <span class="lang-tag">English</span>
+                <span class="lang-tag">繁體中文</span>
+                <span class="lang-tag">简体中文</span>
                 <span class="lang-tag">日本語</span>
                 <span class="lang-tag">한국어</span>
             </div>
 
             <div class="footer-links">
-                <a href="privacy.html" class="btn btn-secondary">隱私政策</a>
-                <a href="privacy-en.html" class="btn btn-secondary">Privacy Policy</a>
-                <a href="../../index.html" class="btn btn-primary">返回首頁</a>
+                <a href="privacy.html" class="btn btn-secondary">
+                    <span data-lang="en">Privacy Policy</span>
+                    <span data-lang="zh" hidden>隱私政策</span>
+                    <span data-lang="zh-hans" hidden>隐私政策</span>
+                    <span data-lang="ja" hidden>プライバシーポリシー</span>
+                    <span data-lang="ko" hidden>개인정보 처리방침</span>
+                </a>
+                <a href="../../index.html" class="btn btn-primary">
+                    <span data-lang="en">Back to Home</span>
+                    <span data-lang="zh" hidden>返回首頁</span>
+                    <span data-lang="zh-hans" hidden>返回首页</span>
+                    <span data-lang="ja" hidden>ホームへ戻る</span>
+                    <span data-lang="ko" hidden>홈으로 돌아가기</span>
+                </a>
             </div>
         </div>
     </div>
+
+    <script>
+        const SUPPORTED_LANGS = ['en', 'zh', 'zh-hans', 'ja', 'ko'];
+        const STORAGE_KEY = 'softstep-lang';
+
+        function setLang(lang) {
+            if (!SUPPORTED_LANGS.includes(lang)) return;
+
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                el.hidden = (el.dataset.lang !== lang);
+            });
+
+            const select = document.getElementById('lang-select');
+            if (select) select.value = lang;
+
+            const langMap = { 'zh': 'zh-Hant', 'zh-hans': 'zh-Hans' };
+            document.documentElement.lang = langMap[lang] || lang;
+
+            const titleMap = {
+                'en': 'Soft Step - Slow Jogging iOS App',
+                'zh': 'Soft Step - 超慢跑 iOS App',
+                'zh-hans': 'Soft Step - 超慢跑 iOS App',
+                'ja': 'Soft Step - スロージョギング iOS App',
+                'ko': 'Soft Step - 슬로우 조깅 iOS App'
+            };
+            document.title = titleMap[lang];
+
+            localStorage.setItem(STORAGE_KEY, lang);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const saved = localStorage.getItem(STORAGE_KEY) || 'en';
+            setLang(saved);
+        });
+    </script>
 </body>
 </html>

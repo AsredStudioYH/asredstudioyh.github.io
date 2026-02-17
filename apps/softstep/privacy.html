@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soft Step - 隱私權政策</title>
+    <title>Soft Step - Privacy Policy</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -78,10 +78,13 @@
         }
 
         .back-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 40px;
         }
 
-        .back-nav a {
+        .back-nav > a {
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -91,8 +94,32 @@
             transition: color 0.3s ease;
         }
 
-        .back-nav a:hover {
+        .back-nav > a:hover {
             color: var(--text-primary);
+        }
+
+        .lang-select {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-family: 'Inter', -apple-system, sans-serif;
+            padding: 6px 10px;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .lang-select:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: var(--text-primary);
+        }
+
+        .lang-select option {
+            background: #1a1a1b;
+            color: #fafafa;
         }
 
         .header {
@@ -129,24 +156,6 @@
         .header .subtitle {
             color: var(--text-secondary);
             font-size: 1.1rem;
-        }
-
-        .lang-switch {
-            margin-top: 16px;
-        }
-
-        .lang-switch a {
-            color: var(--accent-green);
-            text-decoration: none;
-            font-size: 0.9rem;
-            padding: 6px 14px;
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            border-radius: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .lang-switch a:hover {
-            background: rgba(34, 197, 94, 0.1);
         }
 
         .content {
@@ -221,6 +230,7 @@
             height: 20px;
             background: linear-gradient(180deg, var(--accent-green), var(--accent-teal));
             border-radius: 2px;
+            flex-shrink: 0;
         }
 
         h2:first-of-type {
@@ -442,178 +452,713 @@
 
     <div class="container">
         <nav class="back-nav">
-            <a href="index.html">← Back to Soft Step</a>
+            <a href="index.html">← <span data-lang="en">Back to Soft Step</span><span data-lang="zh" hidden>返回 Soft Step</span><span data-lang="zh-hans" hidden>返回 Soft Step</span><span data-lang="ja" hidden>Soft Step に戻る</span><span data-lang="ko" hidden>Soft Step으로 돌아가기</span></a>
+            <select class="lang-select" id="lang-select" onchange="setLang(this.value)">
+                <option value="en">English</option>
+                <option value="zh">繁體中文</option>
+                <option value="zh-hans">简体中文</option>
+                <option value="ja">日本語</option>
+                <option value="ko">한국어</option>
+            </select>
         </nav>
 
         <header class="header">
             <div class="app-icon"><img src="softstep-logo.png" alt="Soft Step"></div>
             <h1>Soft Step</h1>
-            <p class="subtitle">隱私權政策</p>
-            <div class="lang-switch">
-                <a href="privacy-en.html">English Version</a>
-            </div>
+            <p class="subtitle">
+                <span data-lang="en">Privacy Policy</span>
+                <span data-lang="zh" hidden>隱私權政策</span>
+                <span data-lang="zh-hans" hidden>隐私政策</span>
+                <span data-lang="ja" hidden>プライバシーポリシー</span>
+                <span data-lang="ko" hidden>개인정보 처리방침</span>
+            </p>
         </header>
 
         <div class="content">
             <div class="last-updated">
-                <strong>最後更新日期：2026年2月6日</strong>
+                <strong>
+                    <span data-lang="en">Last Updated: February 6, 2026</span>
+                    <span data-lang="zh" hidden>最後更新日期：2026年2月6日</span>
+                    <span data-lang="zh-hans" hidden>最后更新日期：2026年2月6日</span>
+                    <span data-lang="ja" hidden>最終更新日：2026年2月6日</span>
+                    <span data-lang="ko" hidden>최종 업데이트: 2026년 2월 6일</span>
+                </strong>
             </div>
 
-            <p class="intro">感謝您使用 Soft Step（超慢跑）應用程式。我們重視您的隱私權，本政策說明我們如何收集、使用和保護您的資訊。</p>
+            <p class="intro">
+                <span data-lang="en">Thank you for using Soft Step (Slow Jogging) app. We value your privacy, and this policy explains how we collect, use, and protect your information.</span>
+                <span data-lang="zh" hidden>感謝您使用 Soft Step（超慢跑）應用程式。我們重視您的隱私權，本政策說明我們如何收集、使用和保護您的資訊。</span>
+                <span data-lang="zh-hans" hidden>感谢您使用 Soft Step（超慢跑）应用程序。我们重视您的隐私权，本政策说明我们如何收集、使用和保护您的信息。</span>
+                <span data-lang="ja" hidden>Soft Step（スロージョギング）アプリをご利用いただきありがとうございます。お客様のプライバシーを大切にしており、本ポリシーでは情報の収集・利用・保護方法について説明します。</span>
+                <span data-lang="ko" hidden>Soft Step(슬로우 조깅) 앱을 사용해 주셔서 감사합니다. 저희는 귀하의 개인정보를 소중히 여기며, 본 방침은 정보 수집·사용·보호 방법을 설명합니다.</span>
+            </p>
 
             <div class="highlight-box">
-                <h3>重要聲明</h3>
-                <p>Soft Step 是一款注重隱私的運動追蹤應用程式。您的運動數據和個人資訊主要儲存在您的裝置上，我們不會將您的個人資料傳輸到我們的伺服器。</p>
+                <h3>
+                    <span data-lang="en">Important Notice</span>
+                    <span data-lang="zh" hidden>重要聲明</span>
+                    <span data-lang="zh-hans" hidden>重要声明</span>
+                    <span data-lang="ja" hidden>重要なお知らせ</span>
+                    <span data-lang="ko" hidden>중요 안내</span>
+                </h3>
+                <p>
+                    <span data-lang="en">Soft Step is a privacy-focused fitness tracking app. Your workout data and personal information are primarily stored on your device, and we do not transmit your personal data to our servers.</span>
+                    <span data-lang="zh" hidden>Soft Step 是一款注重隱私的運動追蹤應用程式。您的運動數據和個人資訊主要儲存在您的裝置上，我們不會將您的個人資料傳輸到我們的伺服器。</span>
+                    <span data-lang="zh-hans" hidden>Soft Step 是一款注重隐私的运动追踪应用程序。您的运动数据和个人信息主要存储在您的设备上，我们不会将您的个人数据传输到我们的服务器。</span>
+                    <span data-lang="ja" hidden>Soft Step はプライバシーを重視したフィットネス追跡アプリです。ワークアウトデータと個人情報は主にお使いのデバイスに保存され、当社のサーバーに個人データを送信することはありません。</span>
+                    <span data-lang="ko" hidden>Soft Step은 개인정보 보호를 중시하는 피트니스 추적 앱입니다. 운동 데이터와 개인정보는 주로 기기에 저장되며, 저희 서버에 개인 데이터를 전송하지 않습니다.</span>
+                </p>
             </div>
 
-            <h2>1. 資料收集</h2>
+            <h2>
+                <span data-lang="en">1. Data Collection</span>
+                <span data-lang="zh" hidden>1. 資料收集</span>
+                <span data-lang="zh-hans" hidden>1. 数据收集</span>
+                <span data-lang="ja" hidden>1. データの収集</span>
+                <span data-lang="ko" hidden>1. 데이터 수집</span>
+            </h2>
 
-            <h3>1.1 本地儲存資料</h3>
-            <p>以下資料僅儲存在您的裝置上，不會傳輸到任何伺服器：</p>
+            <h3>
+                <span data-lang="en">1.1 Locally Stored Data</span>
+                <span data-lang="zh" hidden>1.1 本地儲存資料</span>
+                <span data-lang="zh-hans" hidden>1.1 本地存储数据</span>
+                <span data-lang="ja" hidden>1.1 ローカル保存データ</span>
+                <span data-lang="ko" hidden>1.1 로컬 저장 데이터</span>
+            </h3>
+            <p>
+                <span data-lang="en">The following data is stored only on your device and is not transmitted to any server:</span>
+                <span data-lang="zh" hidden>以下資料僅儲存在您的裝置上，不會傳輸到任何伺服器：</span>
+                <span data-lang="zh-hans" hidden>以下数据仅存储在您的设备上，不会传输到任何服务器：</span>
+                <span data-lang="ja" hidden>以下のデータはお使いのデバイスにのみ保存され、いかなるサーバーにも送信されません：</span>
+                <span data-lang="ko" hidden>다음 데이터는 기기에만 저장되며 어떤 서버에도 전송되지 않습니다：</span>
+            </p>
             <table>
                 <tr>
-                    <th>資料類型</th>
-                    <th>說明</th>
+                    <th>
+                        <span data-lang="en">Data Type</span>
+                        <span data-lang="zh" hidden>資料類型</span>
+                        <span data-lang="zh-hans" hidden>数据类型</span>
+                        <span data-lang="ja" hidden>データの種類</span>
+                        <span data-lang="ko" hidden>데이터 유형</span>
+                    </th>
+                    <th>
+                        <span data-lang="en">Description</span>
+                        <span data-lang="zh" hidden>說明</span>
+                        <span data-lang="zh-hans" hidden>说明</span>
+                        <span data-lang="ja" hidden>説明</span>
+                        <span data-lang="ko" hidden>설명</span>
+                    </th>
                 </tr>
                 <tr>
-                    <td>運動紀錄</td>
-                    <td>運動日期、時間、持續時間、目標達成狀態</td>
+                    <td>
+                        <span data-lang="en">Workout Records</span>
+                        <span data-lang="zh" hidden>運動紀錄</span>
+                        <span data-lang="zh-hans" hidden>运动记录</span>
+                        <span data-lang="ja" hidden>ワークアウト記録</span>
+                        <span data-lang="ko" hidden>운동 기록</span>
+                    </td>
+                    <td>
+                        <span data-lang="en">Workout date, time, duration, goal completion status</span>
+                        <span data-lang="zh" hidden>運動日期、時間、持續時間、目標達成狀態</span>
+                        <span data-lang="zh-hans" hidden>运动日期、时间、持续时间、目标达成状态</span>
+                        <span data-lang="ja" hidden>運動日・時間・継続時間・目標達成状況</span>
+                        <span data-lang="ko" hidden>운동 날짜·시간·지속시간·목표 달성 상태</span>
+                    </td>
                 </tr>
                 <tr>
-                    <td>運動統計</td>
-                    <td>步數、卡路里消耗、運動距離（部分為推算值）</td>
+                    <td>
+                        <span data-lang="en">Workout Statistics</span>
+                        <span data-lang="zh" hidden>運動統計</span>
+                        <span data-lang="zh-hans" hidden>运动统计</span>
+                        <span data-lang="ja" hidden>運動統計</span>
+                        <span data-lang="ko" hidden>운동 통계</span>
+                    </td>
+                    <td>
+                        <span data-lang="en">Steps, calories burned, distance (some are estimated values)</span>
+                        <span data-lang="zh" hidden>步數、卡路里消耗、運動距離（部分為推算值）</span>
+                        <span data-lang="zh-hans" hidden>步数、卡路里消耗、运动距离（部分为估算值）</span>
+                        <span data-lang="ja" hidden>歩数・消費カロリー・距離（一部推定値）</span>
+                        <span data-lang="ko" hidden>걸음수·칼로리 소모·거리(일부 추정값)</span>
+                    </td>
                 </tr>
                 <tr>
-                    <td>身體資訊</td>
-                    <td>身高、體重、年齡、性別（用於精確計算卡路里消耗）</td>
+                    <td>
+                        <span data-lang="en">Body Information</span>
+                        <span data-lang="zh" hidden>身體資訊</span>
+                        <span data-lang="zh-hans" hidden>身体信息</span>
+                        <span data-lang="ja" hidden>身体情報</span>
+                        <span data-lang="ko" hidden>신체 정보</span>
+                    </td>
+                    <td>
+                        <span data-lang="en">Height, weight, age, gender (used for accurate calorie calculation)</span>
+                        <span data-lang="zh" hidden>身高、體重、年齡、性別（用於精確計算卡路里消耗）</span>
+                        <span data-lang="zh-hans" hidden>身高、体重、年龄、性别（用于精确计算卡路里消耗）</span>
+                        <span data-lang="ja" hidden>身長・体重・年齢・性別（カロリー計算に使用）</span>
+                        <span data-lang="ko" hidden>키·체중·나이·성별(칼로리 계산에 사용)</span>
+                    </td>
                 </tr>
                 <tr>
-                    <td>App 偏好設定</td>
-                    <td>語言、外觀模式、節拍器設定、提醒時間</td>
+                    <td>
+                        <span data-lang="en">App Preferences</span>
+                        <span data-lang="zh" hidden>App 偏好設定</span>
+                        <span data-lang="zh-hans" hidden>应用偏好设置</span>
+                        <span data-lang="ja" hidden>アプリ設定</span>
+                        <span data-lang="ko" hidden>앱 설정</span>
+                    </td>
+                    <td>
+                        <span data-lang="en">Language, appearance mode, metronome settings, reminder time</span>
+                        <span data-lang="zh" hidden>語言、外觀模式、節拍器設定、提醒時間</span>
+                        <span data-lang="zh-hans" hidden>语言、外观模式、节拍器设置、提醒时间</span>
+                        <span data-lang="ja" hidden>言語・表示モード・メトロノーム設定・通知時間</span>
+                        <span data-lang="ko" hidden>언어·표시 모드·메트로놈 설정·알림 시간</span>
+                    </td>
                 </tr>
             </table>
 
-            <h3>1.2 Apple HealthKit 資料</h3>
-            <p>經您明確授權後，本應用程式會讀取和寫入以下健康資料：</p>
+            <h3>
+                <span data-lang="en">1.2 Apple HealthKit Data</span>
+                <span data-lang="zh" hidden>1.2 Apple HealthKit 資料</span>
+                <span data-lang="zh-hans" hidden>1.2 Apple HealthKit 数据</span>
+                <span data-lang="ja" hidden>1.2 Apple HealthKit データ</span>
+                <span data-lang="ko" hidden>1.2 Apple HealthKit 데이터</span>
+            </h3>
+            <p>
+                <span data-lang="en">With your explicit authorization, this app reads and writes the following health data:</span>
+                <span data-lang="zh" hidden>經您明確授權後，本應用程式會讀取和寫入以下健康資料：</span>
+                <span data-lang="zh-hans" hidden>经您明确授权后，本应用程序会读取和写入以下健康数据：</span>
+                <span data-lang="ja" hidden>お客様の明示的な承認を得た上で、本アプリは以下の健康データを読み書きします：</span>
+                <span data-lang="ko" hidden>귀하의 명시적 승인 후, 본 앱은 다음 건강 데이터를 읽고 씁니다：</span>
+            </p>
 
             <div class="info-box">
-                <h3>讀取資料（需您授權）</h3>
+                <h3>
+                    <span data-lang="en">Data Read (Requires Your Authorization)</span>
+                    <span data-lang="zh" hidden>讀取資料（需您授權）</span>
+                    <span data-lang="zh-hans" hidden>读取数据（需您授权）</span>
+                    <span data-lang="ja" hidden>読み取りデータ（認証が必要）</span>
+                    <span data-lang="ko" hidden>읽기 데이터 (승인 필요)</span>
+                </h3>
                 <ul>
-                    <li>步數 (Step Count)</li>
-                    <li>心率 (Heart Rate)</li>
-                    <li>活動熱量消耗 (Active Energy Burned)</li>
-                    <li>步行/跑步距離 (Walking + Running Distance)</li>
-                    <li>身高 (Height)</li>
-                    <li>體重 (Body Mass)</li>
-                    <li>出生日期 (Date of Birth)</li>
-                    <li>生物性別 (Biological Sex)</li>
+                    <li>Step Count</li>
+                    <li>Heart Rate</li>
+                    <li>Active Energy Burned</li>
+                    <li>Walking + Running Distance</li>
+                    <li>Height</li>
+                    <li>Body Mass</li>
+                    <li>Date of Birth</li>
+                    <li>Biological Sex</li>
                 </ul>
             </div>
 
             <div class="info-box">
-                <h3>寫入資料（需您授權）</h3>
+                <h3>
+                    <span data-lang="en">Data Written (Requires Your Authorization)</span>
+                    <span data-lang="zh" hidden>寫入資料（需您授權）</span>
+                    <span data-lang="zh-hans" hidden>写入数据（需您授权）</span>
+                    <span data-lang="ja" hidden>書き込みデータ（認証が必要）</span>
+                    <span data-lang="ko" hidden>쓰기 데이터 (승인 필요)</span>
+                </h3>
                 <ul>
-                    <li>運動記錄 (Workout) - 將您的超慢跑運動同步到 Apple 健康 App</li>
+                    <li>
+                        <span data-lang="en">Workout - Sync your slow jogging workouts to Apple Health app</span>
+                        <span data-lang="zh" hidden>運動記錄 (Workout) - 將您的超慢跑運動同步到 Apple 健康 App</span>
+                        <span data-lang="zh-hans" hidden>运动记录 (Workout) - 将您的超慢跑运动同步到 Apple 健康 App</span>
+                        <span data-lang="ja" hidden>ワークアウト (Workout) - スロージョギングの運動をAppleヘルスケアアプリに同期</span>
+                        <span data-lang="ko" hidden>운동 (Workout) - 슬로우 조깅 운동을 Apple 건강 앱에 동기화</span>
+                    </li>
                 </ul>
             </div>
 
-            <h3>1.3 我們不收集的資料</h3>
+            <h3>
+                <span data-lang="en">1.3 Data We Do Not Collect</span>
+                <span data-lang="zh" hidden>1.3 我們不收集的資料</span>
+                <span data-lang="zh-hans" hidden>1.3 我们不收集的数据</span>
+                <span data-lang="ja" hidden>1.3 収集しないデータ</span>
+                <span data-lang="ko" hidden>1.3 수집하지 않는 데이터</span>
+            </h3>
             <ul>
-                <li>個人身份識別資訊（姓名、電話號碼、地址、電子郵件）</li>
-                <li>位置資訊（本 App 不使用 GPS 定位）</li>
-                <li>使用行為分析資料</li>
-                <li>帳號或密碼資訊</li>
+                <li>
+                    <span data-lang="en">Personal identification information (name, phone number, address, email)</span>
+                    <span data-lang="zh" hidden>個人身份識別資訊（姓名、電話號碼、地址、電子郵件）</span>
+                    <span data-lang="zh-hans" hidden>个人身份识别信息（姓名、电话号码、地址、电子邮件）</span>
+                    <span data-lang="ja" hidden>個人識別情報（氏名・電話番号・住所・メールアドレス）</span>
+                    <span data-lang="ko" hidden>개인 식별 정보(이름·전화번호·주소·이메일)</span>
+                </li>
+                <li>
+                    <span data-lang="en">Location information (this app does not use GPS)</span>
+                    <span data-lang="zh" hidden>位置資訊（本 App 不使用 GPS 定位）</span>
+                    <span data-lang="zh-hans" hidden>位置信息（本 App 不使用 GPS 定位）</span>
+                    <span data-lang="ja" hidden>位置情報（本アプリはGPSを使用しません）</span>
+                    <span data-lang="ko" hidden>위치 정보(본 앱은 GPS를 사용하지 않음)</span>
+                </li>
+                <li>
+                    <span data-lang="en">Usage behavior analytics data</span>
+                    <span data-lang="zh" hidden>使用行為分析資料</span>
+                    <span data-lang="zh-hans" hidden>使用行为分析数据</span>
+                    <span data-lang="ja" hidden>利用行動分析データ</span>
+                    <span data-lang="ko" hidden>이용 행동 분석 데이터</span>
+                </li>
+                <li>
+                    <span data-lang="en">Account or password information</span>
+                    <span data-lang="zh" hidden>帳號或密碼資訊</span>
+                    <span data-lang="zh-hans" hidden>账号或密码信息</span>
+                    <span data-lang="ja" hidden>アカウントまたはパスワード情報</span>
+                    <span data-lang="ko" hidden>계정 또는 비밀번호 정보</span>
+                </li>
             </ul>
 
-            <h2>2. 資料用途</h2>
+            <h2>
+                <span data-lang="en">2. Data Usage</span>
+                <span data-lang="zh" hidden>2. 資料用途</span>
+                <span data-lang="zh-hans" hidden>2. 数据用途</span>
+                <span data-lang="ja" hidden>2. データの利用</span>
+                <span data-lang="ko" hidden>2. 데이터 이용</span>
+            </h2>
             <table>
                 <tr>
-                    <th>資料類型</th>
-                    <th>用途</th>
+                    <th>
+                        <span data-lang="en">Data Type</span>
+                        <span data-lang="zh" hidden>資料類型</span>
+                        <span data-lang="zh-hans" hidden>数据类型</span>
+                        <span data-lang="ja" hidden>データの種類</span>
+                        <span data-lang="ko" hidden>데이터 유형</span>
+                    </th>
+                    <th>
+                        <span data-lang="en">Purpose</span>
+                        <span data-lang="zh" hidden>用途</span>
+                        <span data-lang="zh-hans" hidden>用途</span>
+                        <span data-lang="ja" hidden>目的</span>
+                        <span data-lang="ko" hidden>목적</span>
+                    </th>
                 </tr>
                 <tr>
-                    <td>運動紀錄</td>
-                    <td>追蹤您的運動進度、顯示統計報表</td>
+                    <td>
+                        <span data-lang="en">Workout Records</span>
+                        <span data-lang="zh" hidden>運動紀錄</span>
+                        <span data-lang="zh-hans" hidden>运动记录</span>
+                        <span data-lang="ja" hidden>ワークアウト記録</span>
+                        <span data-lang="ko" hidden>운동 기록</span>
+                    </td>
+                    <td>
+                        <span data-lang="en">Track your workout progress, display statistical reports</span>
+                        <span data-lang="zh" hidden>追蹤您的運動進度、顯示統計報表</span>
+                        <span data-lang="zh-hans" hidden>追踪您的运动进度、显示统计报表</span>
+                        <span data-lang="ja" hidden>運動進捗の追跡・統計レポートの表示</span>
+                        <span data-lang="ko" hidden>운동 진행 상황 추적·통계 보고서 표시</span>
+                    </td>
                 </tr>
                 <tr>
-                    <td>身體數據</td>
-                    <td>精確計算卡路里消耗和推算運動距離</td>
+                    <td>
+                        <span data-lang="en">Body Data</span>
+                        <span data-lang="zh" hidden>身體數據</span>
+                        <span data-lang="zh-hans" hidden>身体数据</span>
+                        <span data-lang="ja" hidden>身体データ</span>
+                        <span data-lang="ko" hidden>신체 데이터</span>
+                    </td>
+                    <td>
+                        <span data-lang="en">Accurately calculate calorie consumption and estimate workout distance</span>
+                        <span data-lang="zh" hidden>精確計算卡路里消耗和推算運動距離</span>
+                        <span data-lang="zh-hans" hidden>精确计算卡路里消耗和估算运动距离</span>
+                        <span data-lang="ja" hidden>カロリー消費の正確な計算と運動距離の推定</span>
+                        <span data-lang="ko" hidden>칼로리 소모 정확 계산 및 운동 거리 추정</span>
+                    </td>
                 </tr>
                 <tr>
-                    <td>HealthKit 數據</td>
-                    <td>與 Apple 健康 App 雙向同步運動記錄</td>
+                    <td>HealthKit Data</td>
+                    <td>
+                        <span data-lang="en">Bidirectional sync of workout records with Apple Health app</span>
+                        <span data-lang="zh" hidden>與 Apple 健康 App 雙向同步運動記錄</span>
+                        <span data-lang="zh-hans" hidden>与 Apple 健康 App 双向同步运动记录</span>
+                        <span data-lang="ja" hidden>Appleヘルスケアアプリとの双方向同期</span>
+                        <span data-lang="ko" hidden>Apple 건강 앱과 양방향 운동 기록 동기화</span>
+                    </td>
                 </tr>
                 <tr>
-                    <td>偏好設定</td>
-                    <td>提供個人化的使用體驗</td>
+                    <td>
+                        <span data-lang="en">Preferences</span>
+                        <span data-lang="zh" hidden>偏好設定</span>
+                        <span data-lang="zh-hans" hidden>偏好设置</span>
+                        <span data-lang="ja" hidden>設定</span>
+                        <span data-lang="ko" hidden>설정</span>
+                    </td>
+                    <td>
+                        <span data-lang="en">Provide personalized user experience</span>
+                        <span data-lang="zh" hidden>提供個人化的使用體驗</span>
+                        <span data-lang="zh-hans" hidden>提供个性化的使用体验</span>
+                        <span data-lang="ja" hidden>パーソナライズされた使用体験の提供</span>
+                        <span data-lang="ko" hidden>개인화된 사용 경험 제공</span>
+                    </td>
                 </tr>
             </table>
 
-            <h2>3. 第三方服務</h2>
+            <h2>
+                <span data-lang="en">3. Third-Party Services</span>
+                <span data-lang="zh" hidden>3. 第三方服務</span>
+                <span data-lang="zh-hans" hidden>3. 第三方服务</span>
+                <span data-lang="ja" hidden>3. サードパーティサービス</span>
+                <span data-lang="ko" hidden>3. 제3자 서비스</span>
+            </h2>
 
             <h3>3.1 Google AdMob</h3>
             <div class="warning-box">
-                <p>本應用程式使用 Google AdMob 提供廣告服務。Google 可能收集以下資訊：</p>
+                <p>
+                    <span data-lang="en">This app uses Google AdMob to provide advertising services. Google may collect the following information:</span>
+                    <span data-lang="zh" hidden>本應用程式使用 Google AdMob 提供廣告服務。Google 可能收集以下資訊：</span>
+                    <span data-lang="zh-hans" hidden>本应用程序使用 Google AdMob 提供广告服务。Google 可能收集以下信息：</span>
+                    <span data-lang="ja" hidden>本アプリはGoogle AdMobを使用して広告サービスを提供しています。Googleは以下の情報を収集する場合があります：</span>
+                    <span data-lang="ko" hidden>본 앱은 Google AdMob을 사용하여 광고 서비스를 제공합니다. Google은 다음 정보를 수집할 수 있습니다：</span>
+                </p>
                 <ul>
-                    <li>裝置識別碼</li>
-                    <li>廣告識別碼 (IDFA)</li>
-                    <li>使用分析和效能資料</li>
+                    <li>
+                        <span data-lang="en">Device identifiers</span>
+                        <span data-lang="zh" hidden>裝置識別碼</span>
+                        <span data-lang="zh-hans" hidden>设备识别码</span>
+                        <span data-lang="ja" hidden>デバイス識別子</span>
+                        <span data-lang="ko" hidden>기기 식별자</span>
+                    </li>
+                    <li>
+                        <span data-lang="en">Advertising identifier (IDFA)</span>
+                        <span data-lang="zh" hidden>廣告識別碼 (IDFA)</span>
+                        <span data-lang="zh-hans" hidden>广告识别码 (IDFA)</span>
+                        <span data-lang="ja" hidden>広告識別子 (IDFA)</span>
+                        <span data-lang="ko" hidden>광고 식별자 (IDFA)</span>
+                    </li>
+                    <li>
+                        <span data-lang="en">Usage analytics and performance data</span>
+                        <span data-lang="zh" hidden>使用分析和效能資料</span>
+                        <span data-lang="zh-hans" hidden>使用分析和效能数据</span>
+                        <span data-lang="ja" hidden>使用状況分析・パフォーマンスデータ</span>
+                        <span data-lang="ko" hidden>이용 분석 및 성능 데이터</span>
+                    </li>
                 </ul>
-                <p>這些資料用於提供相關廣告內容和改善廣告服務。</p>
-                <p><strong>如何退出個人化廣告：</strong>您可以在 iOS 設定 > 隱私權與安全性 > Apple 廣告 中調整廣告偏好設定。</p>
-                <p>Google 隱私權政策：<a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a></p>
+                <p>
+                    <span data-lang="en">This data is used to provide relevant advertising content and improve advertising services.</span>
+                    <span data-lang="zh" hidden>這些資料用於提供相關廣告內容和改善廣告服務。</span>
+                    <span data-lang="zh-hans" hidden>这些数据用于提供相关广告内容和改善广告服务。</span>
+                    <span data-lang="ja" hidden>これらのデータは関連する広告コンテンツの提供と広告サービスの改善に使用されます。</span>
+                    <span data-lang="ko" hidden>해당 데이터는 관련 광고 콘텐츠 제공 및 광고 서비스 개선에 사용됩니다.</span>
+                </p>
+                <p>
+                    <strong>
+                        <span data-lang="en">How to opt out of personalized ads:</span>
+                        <span data-lang="zh" hidden>如何退出個人化廣告：</span>
+                        <span data-lang="zh-hans" hidden>退出个性化广告：</span>
+                        <span data-lang="ja" hidden>パーソナライズ広告のオプトアウト：</span>
+                        <span data-lang="ko" hidden>맞춤형 광고 거부：</span>
+                    </strong>
+                    <span data-lang="en"> You can adjust your advertising preferences in iOS Settings > Privacy &amp; Security > Apple Advertising.</span>
+                    <span data-lang="zh" hidden> 您可以在 iOS 設定 > 隱私權與安全性 > Apple 廣告 中調整廣告偏好設定。</span>
+                    <span data-lang="zh-hans" hidden> 您可以在 iOS 设置 > 隐私与安全性 > Apple 广告 中调整广告偏好设置。</span>
+                    <span data-lang="ja" hidden> iOS設定 > プライバシーとセキュリティ > Apple広告 で広告設定を調整できます。</span>
+                    <span data-lang="ko" hidden> iOS 설정 > 개인정보 보호 및 보안 > Apple 광고에서 광고 설정을 조정할 수 있습니다.</span>
+                </p>
+                <p>
+                    <span data-lang="en">Google Privacy Policy: </span>
+                    <span data-lang="zh" hidden>Google 隱私權政策：</span>
+                    <span data-lang="zh-hans" hidden>Google 隐私政策：</span>
+                    <span data-lang="ja" hidden>Google プライバシーポリシー：</span>
+                    <span data-lang="ko" hidden>Google 개인정보 처리방침：</span>
+                    <a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a>
+                </p>
             </div>
 
             <h3>3.2 Apple HealthKit</h3>
-            <p>HealthKit 資料由 Apple 安全管理，遵循 Apple 的隱私政策。</p>
-            <p>Apple 隱私權政策：<a href="https://www.apple.com/legal/privacy/" target="_blank">https://www.apple.com/legal/privacy/</a></p>
+            <p>
+                <span data-lang="en">HealthKit data is securely managed by Apple and follows Apple's privacy policy.</span>
+                <span data-lang="zh" hidden>HealthKit 資料由 Apple 安全管理，遵循 Apple 的隱私政策。</span>
+                <span data-lang="zh-hans" hidden>HealthKit 数据由 Apple 安全管理，遵循 Apple 的隐私政策。</span>
+                <span data-lang="ja" hidden>HealthKitデータはAppleによって安全に管理され、Appleのプライバシーポリシーに従います。</span>
+                <span data-lang="ko" hidden>HealthKit 데이터는 Apple이 안전하게 관리하며 Apple의 개인정보 처리방침을 따릅니다.</span>
+            </p>
+            <p>
+                <span data-lang="en">Apple Privacy Policy: </span>
+                <span data-lang="zh" hidden>Apple 隱私權政策：</span>
+                <span data-lang="zh-hans" hidden>Apple 隐私政策：</span>
+                <span data-lang="ja" hidden>Apple プライバシーポリシー：</span>
+                <span data-lang="ko" hidden>Apple 개인정보 처리방침：</span>
+                <a href="https://www.apple.com/legal/privacy/" target="_blank">https://www.apple.com/legal/privacy/</a>
+            </p>
 
-            <h2>4. 資料儲存與安全</h2>
+            <h2>
+                <span data-lang="en">4. Data Storage and Security</span>
+                <span data-lang="zh" hidden>4. 資料儲存與安全</span>
+                <span data-lang="zh-hans" hidden>4. 数据存储与安全</span>
+                <span data-lang="ja" hidden>4. データの保存とセキュリティ</span>
+                <span data-lang="ko" hidden>4. 데이터 저장 및 보안</span>
+            </h2>
             <ul>
-                <li>所有運動資料僅儲存在您的裝置上</li>
-                <li>我們不運營任何伺服器，不收集也不傳輸您的個人資料</li>
-                <li>刪除應用程式將永久移除所有本地資料</li>
-                <li>HealthKit 資料由 Apple 加密保護</li>
+                <li>
+                    <span data-lang="en">All workout data is stored only on your device</span>
+                    <span data-lang="zh" hidden>所有運動資料僅儲存在您的裝置上</span>
+                    <span data-lang="zh-hans" hidden>所有运动数据仅存储在您的设备上</span>
+                    <span data-lang="ja" hidden>すべての運動データはお使いのデバイスにのみ保存されます</span>
+                    <span data-lang="ko" hidden>모든 운동 데이터는 기기에만 저장됩니다</span>
+                </li>
+                <li>
+                    <span data-lang="en">We do not operate any servers; we do not collect or transmit your personal data</span>
+                    <span data-lang="zh" hidden>我們不運營任何伺服器，不收集也不傳輸您的個人資料</span>
+                    <span data-lang="zh-hans" hidden>我们不运营任何服务器，不收集也不传输您的个人数据</span>
+                    <span data-lang="ja" hidden>当社はサーバーを運営しておらず、個人データの収集・送信を行いません</span>
+                    <span data-lang="ko" hidden>저희는 서버를 운영하지 않으며 개인 데이터를 수집하거나 전송하지 않습니다</span>
+                </li>
+                <li>
+                    <span data-lang="en">Deleting the app will permanently remove all local data</span>
+                    <span data-lang="zh" hidden>刪除應用程式將永久移除所有本地資料</span>
+                    <span data-lang="zh-hans" hidden>删除应用程序将永久移除所有本地数据</span>
+                    <span data-lang="ja" hidden>アプリを削除するとすべてのローカルデータが完全に削除されます</span>
+                    <span data-lang="ko" hidden>앱을 삭제하면 모든 로컬 데이터가 영구 삭제됩니다</span>
+                </li>
+                <li>
+                    <span data-lang="en">HealthKit data is encrypted and protected by Apple</span>
+                    <span data-lang="zh" hidden>HealthKit 資料由 Apple 加密保護</span>
+                    <span data-lang="zh-hans" hidden>HealthKit 数据由 Apple 加密保护</span>
+                    <span data-lang="ja" hidden>HealthKitデータはAppleによって暗号化・保護されています</span>
+                    <span data-lang="ko" hidden>HealthKit 데이터는 Apple이 암호화하여 보호합니다</span>
+                </li>
             </ul>
 
-            <h2>5. 資料分享</h2>
-            <p>我們不會向任何第三方出售、交易或分享您的個人資料。</p>
+            <h2>
+                <span data-lang="en">5. Data Sharing</span>
+                <span data-lang="zh" hidden>5. 資料分享</span>
+                <span data-lang="zh-hans" hidden>5. 数据分享</span>
+                <span data-lang="ja" hidden>5. データの共有</span>
+                <span data-lang="ko" hidden>5. 데이터 공유</span>
+            </h2>
+            <p>
+                <span data-lang="en">We do not sell, trade, or share your personal data with any third parties.</span>
+                <span data-lang="zh" hidden>我們不會向任何第三方出售、交易或分享您的個人資料。</span>
+                <span data-lang="zh-hans" hidden>我们不会向任何第三方出售、交易或分享您的个人数据。</span>
+                <span data-lang="ja" hidden>当社はお客様の個人データを第三者に販売・取引・共有することはありません。</span>
+                <span data-lang="ko" hidden>저희는 귀하의 개인 데이터를 어떤 제3자에게도 판매·거래·공유하지 않습니다.</span>
+            </p>
 
-            <h2>6. 您的權利</h2>
-            <p>您可以隨時行使以下權利：</p>
+            <h2>
+                <span data-lang="en">6. Your Rights</span>
+                <span data-lang="zh" hidden>6. 您的權利</span>
+                <span data-lang="zh-hans" hidden>6. 您的权利</span>
+                <span data-lang="ja" hidden>6. お客様の権利</span>
+                <span data-lang="ko" hidden>6. 귀하의 권리</span>
+            </h2>
+            <p>
+                <span data-lang="en">You can exercise the following rights at any time:</span>
+                <span data-lang="zh" hidden>您可以隨時行使以下權利：</span>
+                <span data-lang="zh-hans" hidden>您可以随时行使以下权利：</span>
+                <span data-lang="ja" hidden>お客様はいつでも以下の権利を行使できます：</span>
+                <span data-lang="ko" hidden>귀하는 언제든지 다음 권리를 행사할 수 있습니다：</span>
+            </p>
             <ul>
-                <li><strong>查看資料：</strong>在 App 內查看所有運動紀錄和統計</li>
-                <li><strong>刪除資料：</strong>透過刪除 App 移除所有本地資料</li>
-                <li><strong>撤銷 HealthKit 授權：</strong>在 iOS 設定 > 健康 > 資料取用權與裝置 中管理</li>
-                <li><strong>退出個人化廣告：</strong>在裝置設定中調整廣告偏好</li>
+                <li>
+                    <strong>
+                        <span data-lang="en">View Data:</span>
+                        <span data-lang="zh" hidden>查看資料：</span>
+                        <span data-lang="zh-hans" hidden>查看数据：</span>
+                        <span data-lang="ja" hidden>データの閲覧：</span>
+                        <span data-lang="ko" hidden>데이터 조회：</span>
+                    </strong>
+                    <span data-lang="en"> View all workout records and statistics within the app</span>
+                    <span data-lang="zh" hidden> 在 App 內查看所有運動紀錄和統計</span>
+                    <span data-lang="zh-hans" hidden> 在 App 内查看所有运动记录和统计</span>
+                    <span data-lang="ja" hidden> アプリ内ですべての運動記録と統計を閲覧できます</span>
+                    <span data-lang="ko" hidden> 앱 내에서 모든 운동 기록과 통계를 확인할 수 있습니다</span>
+                </li>
+                <li>
+                    <strong>
+                        <span data-lang="en">Delete Data:</span>
+                        <span data-lang="zh" hidden>刪除資料：</span>
+                        <span data-lang="zh-hans" hidden>删除数据：</span>
+                        <span data-lang="ja" hidden>データの削除：</span>
+                        <span data-lang="ko" hidden>데이터 삭제：</span>
+                    </strong>
+                    <span data-lang="en"> Remove all local data by deleting the app</span>
+                    <span data-lang="zh" hidden> 透過刪除 App 移除所有本地資料</span>
+                    <span data-lang="zh-hans" hidden> 通过删除 App 移除所有本地数据</span>
+                    <span data-lang="ja" hidden> アプリを削除してすべてのローカルデータを削除できます</span>
+                    <span data-lang="ko" hidden> 앱을 삭제하여 모든 로컬 데이터를 제거할 수 있습니다</span>
+                </li>
+                <li>
+                    <strong>
+                        <span data-lang="en">Revoke HealthKit Authorization:</span>
+                        <span data-lang="zh" hidden>撤銷 HealthKit 授權：</span>
+                        <span data-lang="zh-hans" hidden>撤销 HealthKit 授权：</span>
+                        <span data-lang="ja" hidden>HealthKit認証の取り消し：</span>
+                        <span data-lang="ko" hidden>HealthKit 권한 취소：</span>
+                    </strong>
+                    <span data-lang="en"> Manage in iOS Settings > Health > Data Access &amp; Devices</span>
+                    <span data-lang="zh" hidden> 在 iOS 設定 > 健康 > 資料取用權與裝置 中管理</span>
+                    <span data-lang="zh-hans" hidden> 在 iOS 设置 > 健康 > 数据访问权与设备 中管理</span>
+                    <span data-lang="ja" hidden> iOS設定 > ヘルスケア > データアクセスとデバイス で管理</span>
+                    <span data-lang="ko" hidden> iOS 설정 > 건강 > 데이터 접근 및 기기에서 관리</span>
+                </li>
+                <li>
+                    <strong>
+                        <span data-lang="en">Opt Out of Personalized Ads:</span>
+                        <span data-lang="zh" hidden>退出個人化廣告：</span>
+                        <span data-lang="zh-hans" hidden>退出个性化广告：</span>
+                        <span data-lang="ja" hidden>パーソナライズ広告のオプトアウト：</span>
+                        <span data-lang="ko" hidden>맞춤형 광고 거부：</span>
+                    </strong>
+                    <span data-lang="en"> Adjust advertising preferences in device settings</span>
+                    <span data-lang="zh" hidden> 在裝置設定中調整廣告偏好</span>
+                    <span data-lang="zh-hans" hidden> 在设备设置中调整广告偏好</span>
+                    <span data-lang="ja" hidden> デバイス設定で広告設定を調整</span>
+                    <span data-lang="ko" hidden> 기기 설정에서 광고 설정 조정</span>
+                </li>
             </ul>
 
-            <h2>7. 兒童隱私</h2>
-            <p>本應用程式適合所有年齡使用。我們不會故意收集 13 歲以下兒童的個人資訊。</p>
+            <h2>
+                <span data-lang="en">7. Children's Privacy</span>
+                <span data-lang="zh" hidden>7. 兒童隱私</span>
+                <span data-lang="zh-hans" hidden>7. 儿童隐私</span>
+                <span data-lang="ja" hidden>7. 子どものプライバシー</span>
+                <span data-lang="ko" hidden>7. 아동 개인정보 보호</span>
+            </h2>
+            <p>
+                <span data-lang="en">This app is suitable for all ages. We do not knowingly collect personal information from children under 13.</span>
+                <span data-lang="zh" hidden>本應用程式適合所有年齡使用。我們不會故意收集 13 歲以下兒童的個人資訊。</span>
+                <span data-lang="zh-hans" hidden>本应用程序适合所有年龄使用。我们不会故意收集 13 岁以下儿童的个人信息。</span>
+                <span data-lang="ja" hidden>本アプリはすべての年齢層を対象としています。13歳未満の子どもから意図的に個人情報を収集することはありません。</span>
+                <span data-lang="ko" hidden>본 앱은 모든 연령대에 적합합니다. 저희는 13세 미만 아동의 개인정보를 의도적으로 수집하지 않습니다.</span>
+            </p>
 
-            <h2>8. 國際用戶</h2>
-            <p>無論您身處何地，您的個人資料僅儲存在您的裝置上，不會跨境傳輸到任何伺服器。本應用程式符合以下法規的資料保護要求：</p>
+            <h2>
+                <span data-lang="en">8. International Users</span>
+                <span data-lang="zh" hidden>8. 國際用戶</span>
+                <span data-lang="zh-hans" hidden>8. 国际用户</span>
+                <span data-lang="ja" hidden>8. 国際ユーザー</span>
+                <span data-lang="ko" hidden>8. 국제 이용자</span>
+            </h2>
+            <p>
+                <span data-lang="en">Regardless of your location, your personal data is stored only on your device and is not transferred to any servers across borders. This app complies with the data protection requirements of the following regulations:</span>
+                <span data-lang="zh" hidden>無論您身處何地，您的個人資料僅儲存在您的裝置上，不會跨境傳輸到任何伺服器。本應用程式符合以下法規的資料保護要求：</span>
+                <span data-lang="zh-hans" hidden>无论您身处何地，您的个人数据仅存储在您的设备上，不会跨境传输到任何服务器。本应用程序符合以下法规的数据保护要求：</span>
+                <span data-lang="ja" hidden>ご利用の地域に関わらず、個人データはお使いのデバイスにのみ保存され、国境を越えてサーバーに転送されることはありません。本アプリは以下の規制のデータ保護要件に準拠しています：</span>
+                <span data-lang="ko" hidden>위치에 관계없이 개인 데이터는 기기에만 저장되며 국경을 넘어 서버로 전송되지 않습니다. 본 앱은 다음 규정의 데이터 보호 요구사항을 준수합니다：</span>
+            </p>
             <ul>
-                <li>歐盟《一般資料保護規則》(GDPR)</li>
-                <li>美國《加州消費者隱私法》(CCPA)</li>
-                <li>日本《個人資訊保護法》(APPI)</li>
-                <li>韓國《個人資訊保護法》(PIPA)</li>
+                <li>
+                    <span data-lang="en">European Union General Data Protection Regulation (GDPR)</span>
+                    <span data-lang="zh" hidden>歐盟《一般資料保護規則》(GDPR)</span>
+                    <span data-lang="zh-hans" hidden>欧盟《一般数据保护条例》(GDPR)</span>
+                    <span data-lang="ja" hidden>EU一般データ保護規則 (GDPR)</span>
+                    <span data-lang="ko" hidden>EU 일반 데이터 보호 규정 (GDPR)</span>
+                </li>
+                <li>
+                    <span data-lang="en">California Consumer Privacy Act (CCPA)</span>
+                    <span data-lang="zh" hidden>美國《加州消費者隱私法》(CCPA)</span>
+                    <span data-lang="zh-hans" hidden>美国《加利福尼亚消费者隐私法》(CCPA)</span>
+                    <span data-lang="ja" hidden>カリフォルニア州消費者プライバシー法 (CCPA)</span>
+                    <span data-lang="ko" hidden>미국 캘리포니아 소비자 개인정보 보호법 (CCPA)</span>
+                </li>
+                <li>
+                    <span data-lang="en">Japan Act on the Protection of Personal Information (APPI)</span>
+                    <span data-lang="zh" hidden>日本《個人資訊保護法》(APPI)</span>
+                    <span data-lang="zh-hans" hidden>日本《个人信息保护法》(APPI)</span>
+                    <span data-lang="ja" hidden>日本個人情報保護法 (APPI)</span>
+                    <span data-lang="ko" hidden>일본 개인정보 보호법 (APPI)</span>
+                </li>
+                <li>
+                    <span data-lang="en">Korea Personal Information Protection Act (PIPA)</span>
+                    <span data-lang="zh" hidden>韓國《個人資訊保護法》(PIPA)</span>
+                    <span data-lang="zh-hans" hidden>韩国《个人信息保护法》(PIPA)</span>
+                    <span data-lang="ja" hidden>韓国個人情報保護法 (PIPA)</span>
+                    <span data-lang="ko" hidden>한국 개인정보 보호법 (PIPA)</span>
+                </li>
             </ul>
 
-            <h2>9. 政策變更</h2>
-            <p>我們可能會不定期更新本隱私權政策。重大變更將在應用程式更新說明中通知您。建議您定期查閱本政策。</p>
+            <h2>
+                <span data-lang="en">9. Policy Changes</span>
+                <span data-lang="zh" hidden>9. 政策變更</span>
+                <span data-lang="zh-hans" hidden>9. 政策变更</span>
+                <span data-lang="ja" hidden>9. ポリシーの変更</span>
+                <span data-lang="ko" hidden>9. 방침 변경</span>
+            </h2>
+            <p>
+                <span data-lang="en">We may update this privacy policy from time to time. Significant changes will be notified in the app update notes. We recommend that you review this policy periodically.</span>
+                <span data-lang="zh" hidden>我們可能會不定期更新本隱私權政策。重大變更將在應用程式更新說明中通知您。建議您定期查閱本政策。</span>
+                <span data-lang="zh-hans" hidden>我们可能会不定期更新本隐私政策。重大变更将在应用程序更新说明中通知您。建议您定期查阅本政策。</span>
+                <span data-lang="ja" hidden>本プライバシーポリシーは随時更新される場合があります。重要な変更はアプリのアップデートノートでお知らせします。定期的に本ポリシーをご確認いただくことをお勧めします。</span>
+                <span data-lang="ko" hidden>본 개인정보 처리방침은 수시로 업데이트될 수 있습니다. 중요한 변경 사항은 앱 업데이트 노트에서 안내합니다. 정기적으로 본 방침을 확인하실 것을 권장합니다.</span>
+            </p>
 
             <div class="contact-box">
-                <h2>10. 聯絡我們</h2>
-                <p>如果您對本隱私權政策有任何疑問或建議，請聯絡我們：</p>
-                <p><strong>電子郵件：</strong><a href="mailto:flakier-parader3z@icloud.com">flakier-parader3z@icloud.com</a></p>
+                <h2>
+                    <span data-lang="en">10. Contact Us</span>
+                    <span data-lang="zh" hidden>10. 聯絡我們</span>
+                    <span data-lang="zh-hans" hidden>10. 联系我们</span>
+                    <span data-lang="ja" hidden>10. お問い合わせ</span>
+                    <span data-lang="ko" hidden>10. 문의하기</span>
+                </h2>
+                <p>
+                    <span data-lang="en">If you have any questions or suggestions about this privacy policy, please contact us:</span>
+                    <span data-lang="zh" hidden>如果您對本隱私權政策有任何疑問或建議，請聯絡我們：</span>
+                    <span data-lang="zh-hans" hidden>如果您对本隐私政策有任何疑问或建议，请联系我们：</span>
+                    <span data-lang="ja" hidden>本プライバシーポリシーについてご質問・ご意見がございましたら、お気軽にお問い合わせください：</span>
+                    <span data-lang="ko" hidden>본 개인정보 처리방침에 대해 궁금하신 점이나 의견이 있으시면 연락해 주세요：</span>
+                </p>
+                <p>
+                    <strong>
+                        <span data-lang="en">Email:</span>
+                        <span data-lang="zh" hidden>電子郵件：</span>
+                        <span data-lang="zh-hans" hidden>电子邮件：</span>
+                        <span data-lang="ja" hidden>メールアドレス：</span>
+                        <span data-lang="ko" hidden>이메일：</span>
+                    </strong>
+                    <a href="mailto:flakier-parader3z@icloud.com">flakier-parader3z@icloud.com</a>
+                </p>
             </div>
 
             <div class="footer-links">
-                <a href="index.html" class="btn btn-secondary">返回 App 頁面</a>
-                <a href="../../index.html" class="btn btn-primary">返回首頁</a>
+                <a href="index.html" class="btn btn-secondary">
+                    <span data-lang="en">Back to App Page</span>
+                    <span data-lang="zh" hidden>返回 App 頁面</span>
+                    <span data-lang="zh-hans" hidden>返回 App 页面</span>
+                    <span data-lang="ja" hidden>App ページに戻る</span>
+                    <span data-lang="ko" hidden>App 페이지로 돌아가기</span>
+                </a>
+                <a href="../../index.html" class="btn btn-primary">
+                    <span data-lang="en">Back to Home</span>
+                    <span data-lang="zh" hidden>返回首頁</span>
+                    <span data-lang="zh-hans" hidden>返回首页</span>
+                    <span data-lang="ja" hidden>ホームに戻る</span>
+                    <span data-lang="ko" hidden>홈으로 돌아가기</span>
+                </a>
             </div>
         </div>
     </div>
+
+    <script>
+        const SUPPORTED_LANGS = ['en', 'zh', 'zh-hans', 'ja', 'ko'];
+        const STORAGE_KEY = 'softstep-lang';
+
+        function setLang(lang) {
+            if (!SUPPORTED_LANGS.includes(lang)) return;
+
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                el.hidden = (el.dataset.lang !== lang);
+            });
+
+            const select = document.getElementById('lang-select');
+            if (select) select.value = lang;
+
+            const langMap = { 'zh': 'zh-Hant', 'zh-hans': 'zh-Hans' };
+            document.documentElement.lang = langMap[lang] || lang;
+
+            const titleMap = {
+                'en': 'Soft Step - Privacy Policy',
+                'zh': 'Soft Step - 隱私權政策',
+                'zh-hans': 'Soft Step - 隐私政策',
+                'ja': 'Soft Step - プライバシーポリシー',
+                'ko': 'Soft Step - 개인정보 처리방침'
+            };
+            document.title = titleMap[lang];
+
+            localStorage.setItem(STORAGE_KEY, lang);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const saved = localStorage.getItem(STORAGE_KEY) || 'en';
+            setLang(saved);
+        });
+    </script>
 </body>
 </html>
